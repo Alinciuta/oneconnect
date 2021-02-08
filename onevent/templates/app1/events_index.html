@@ -1,0 +1,29 @@
+{% extends 'menu.html' %}
+{% block content %}
+    <br>
+    <br>
+    <a href="{% url 'app1:adaugare' %}" class="header_style">Adaugare</a>
+    <table id="id_tabel">
+        <thead class="header_style">
+        <th>Index</th>
+        <th>Eventname</th>
+        <th>Banner</th>
+        <th>Data</th>
+        <th>Eventdescription</th>
+        <th>Event_type</th>
+        </thead>
+        <tbody>
+        {% for item in all_events %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.eventname }}</td>
+                <td>{{ item.banner }}</td>
+                <td>{{ item.data }}</td>
+                <td>{{ item.eventdescription }}</td>
+                <td>{{ item.event_type }}</td>
+                <td><a href="{% url 'app1:modificare' item.id %}">Edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
