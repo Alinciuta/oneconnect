@@ -17,7 +17,10 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ item.eventname }}</td>
-                <td>{{ item.banner }}</td>
+                <td>
+                    {% if item.banner %}
+                    <img src="media/{{ item.banner }}" width="100"></td>
+                    {% endif %}
                 <td>{{ item.data }}</td>
                 <td>{{ item.eventdescription }}</td>
                 <td>{{ item.event_type }}</td>
