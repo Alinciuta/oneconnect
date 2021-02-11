@@ -11,7 +11,7 @@
 #         widgets = {
 #             'eventname': TextInput(attrs={'placeholder': 'Event name', 'class': 'form-control'}),
 #             'banner': TextInput(attrs={'placeholder': 'Banner', 'class': 'form-control'}),
-#             'data':
+#             'data': TextInput(attrs={'placeholder': 'Banner', 'class': 'form-control'}),
 #             'eventdescription': TextInput(attrs={'placeholder': 'Description', 'class': 'form-control'}),
 #             'event_type': Select(attrs={'class': 'form-control'}),
 #         }

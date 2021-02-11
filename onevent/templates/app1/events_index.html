@@ -2,15 +2,15 @@
 {% block content %}
     <br>
     <br>
-    <a href="{% url 'app1:adaugare' %}" class="header_style">Adaugare</a>
+    <a href="{% url 'app1:adaugare' %}">Adaugare</a>
     <table id="id_tabel">
         <thead class="header_style">
-        <th>Index</th>
-        <th>Eventname</th>
-        <th>Banner</th>
-        <th>Data</th>
-        <th>Eventdescription</th>
-        <th>Event_type</th>
+            <th>Index</th>
+            <th>Event Name</th>
+            <th>Banner</th>
+            <th>Data</th>
+            <th>Event Description</th>
+            <th>Event type</th>
         </thead>
         <tbody>
         {% for item in all_events %}
@@ -21,7 +21,7 @@
                 <td>{{ item.data }}</td>
                 <td>{{ item.eventdescription }}</td>
                 <td>{{ item.event_type }}</td>
-                <td><a href="{% url 'app1:modificare' item.id %}">Edit</a></td>
+
             </tr>
         {% endfor %}
         </tbody>

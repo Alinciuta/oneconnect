@@ -7,10 +7,9 @@ et_choices = (('Virtual', 'Virtual'),
                ('Hybrid', 'Hybrid'))
 
 class Events(models.Model):
-
     eventname = models.CharField(max_length=200)
-    banner = models.ImageField(upload_to='bannere', null=True)
-    eventdate = models.DateTimeField('data')
+    banner = models.ImageField(upload_to='media/bannere', null=True, blank=True)
+    eventdate = models.CharField(max_length=200)
     eventdescription = models.TextField()
     event_type = models.CharField(max_length=50, choices=et_choices)
 
