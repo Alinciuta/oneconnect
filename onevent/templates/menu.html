@@ -8,16 +8,27 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
-<body class="about-us">
+<body class="about-us" style="background-color:white;">
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent nav-down" color-on-scroll="200">
     <div class="container">
         <div class="navbar-translate">
             <div class="navbar-header">
-
             </div>
-            <br>
-<a href="{% url 'app1:home' %}">Home</a>
-<a href="{% url 'app1:adaugare' %}">Adaugare eveniment</a>
+            <style>
+                td, th {
+                  border: 1px;
+                  text-align: left;
+                  padding: 8px;
+                }
+                </style>
+            <table style="background-color:white;><tr>
+            <div class="collapse navbar-collapse">
+                <th><a href="{% url 'app1:home' %}"><img src="/media/logo.png" height="70"></a></th>
+                <th><a style="color:#f23a40;" href="{% url 'app1:home' %}">Home</a></th>
+                <th><a style="color:#f23a40;" href="{% url 'app1:events' %}">Evenimente</a></th>
+                <th><a style="color:#f23a40;" href="{% url 'app1:adaugare' %}">Adaugare eveniment</a></th>
+                <th><a style="color:#f23a40;" href="{% url 'app1:contact' %}">Contact</a></div></th>
+            </tr></table>
         </div>
     </div>
 </nav>
@@ -26,6 +37,7 @@
     <div class="filter filter-danger"></div>
     <div class="content-center">
         <div class="container">
+            <br><br>
             {% block content %}
             {% endblock %}
         </div>
