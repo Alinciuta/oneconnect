@@ -10,7 +10,7 @@ et_choices = (('Virtual', 'Virtual'),
 
 
 class Events(models.Model):
-    eventname = models.CharField(max_length=200)
+    eventname = models.CharField(max_length=200, unique=True)
     banner = models.ImageField(upload_to='bannere', null=True, blank=True)
     eventdate = models.CharField(max_length=200)
     eventdescription = models.TextField(default='')
@@ -21,4 +21,9 @@ class Events(models.Model):
         return f"{self.banner} - {self.eventname} - {self.eventdate}"
 
 
+class Question(models.Model):
+    author = models.CharField(max_length=100)
+    content = models.TextField(max_length=300)
 
+    def __str__(self):
+        return str(self.author)

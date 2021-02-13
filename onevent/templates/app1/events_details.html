@@ -1,0 +1,19 @@
+{% extends 'menu.html' %}
+{% block content %}
+    <table id="id_tabel">
+        <thead class="header_style">
+        </thead>
+        <br><br>
+        <tbody>
+        {% for item in all_questions %}
+            <tr>
+                <td>
+                    {{ item.author }}
+                    {{ item.content }}
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

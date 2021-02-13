@@ -9,7 +9,7 @@
                     <img src="/media/bannere/preventia_sinuciderii.png" width="1000"></a>
                     <br><b><h5>13 martie 2021 - Virtual Event</h5></b>
                     <br>
-                    <br><br>
+                    <br>
                 </center></td></tr>
         </tbody>
 </table>
@@ -21,9 +21,46 @@
                     <td><iframe width="621" height="355" src="https://www.youtube.com/embed/5HrkmCKgNqY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                      </td>
                      <td>
-                        Q&A Section
+
+<h3>Ask a question!</h3>
+<div id="questions_section">
+  {% if user.is_authenticated %}
+  <form method="POST">
+    {% csrf_token %}
+    <div class="box">
+      {{ question_form }}
+
+      <button class="btn btn-info" type="submit">Add question</button>
+    </div>
+  </form>
+  {% else %}
+  <a class="btn btn-outline-info" href="{% url 'login' %}">Log in to ask a question!</a><br>
+  {% endif %}
+
+  {% if all_questions %}
+  <ul>
+    {% for question in all_questions %}
+    <li>
+     <div>
+        <span>
+          <strong class="text-info">{{ question.author }} </strong>
+        </span>
+        <p>
+          {{ question.content }}
+        </p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <strong class="text-secondary"><br>No questions yet..</strong>
+  {% endif %}
+</div>
                     </td>
                 </tr>
+            </tbody></table>
 
+<br><br><center><h4>Agenda</h4></center>
+<br><br>
 
 {% endblock %}
