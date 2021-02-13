@@ -1,0 +1,17 @@
+{% extends 'menu.html' %}
+{% block content %}
+    <br>
+    <br>
+    <center><div class="row">
+        <center><form class="register-form" method="POST">
+            {% csrf_token %}
+            <label class="control-label">Username</label>
+            <input type="text" name="username" class="form-control">
+            <br>
+            <label class="control-label">Password</label>
+            <input type="password" name="password" class="form-control">
+            <br>
+            <button type="submit" class="btn btn-blue btn-fill btn-danger" onclick="{% url 'login' %}">Login</button>
+        </form></center>
+    </div></center>
+{% endblock %}

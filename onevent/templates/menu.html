@@ -9,25 +9,36 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 <body class="about-us" style="background-color:white;">
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent nav-down" color-on-scroll="200">
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent nav-down" color-on-scroll="blue">
     <div class="container">
         <div class="navbar-translate">
             <div class="navbar-header">
             </div>
             <style>
                 td, th {
-                  border: 1px;
+                  border: 3px;
                   text-align: left;
-                  padding: 8px;
+                  padding: 10px;
                 }
                 </style>
             <table style="background-color:white;><tr>
             <div class="collapse navbar-collapse">
                 <th><a href="{% url 'app1:home' %}"><img src="/media/logo.png" height="70"></a></th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:home' %}">Home</a></th>
-                <th><a style="color:#f23a40;" href="{% url 'app1:events' %}">Evenimente</a></th>
-                <th><a style="color:#f23a40;" href="{% url 'app1:adaugare' %}">Adaugare eveniment</a></th>
+                <th><a style="color:#f23a40;" href="{% url 'app1:events' %}">All events</a></th>
+                <th><a style="color:#f23a40;" href="{% url 'app1:adaugare' %}">Add event</a></th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:contact' %}">Contact</a></div></th>
+                <th>
+                    {% if request.user.is_authenticated == False %}
+                    <a style="color:#f23a40;" href="{% url 'login' %}">Login</a></div>
+                    {% endif %}
+                </th>
+                <th>
+                    {% if request.user.is_authenticated == True %}
+                    <a style="color:#f23a40;" href="{% url 'logout' %}">Logout</a></div>
+                    {% endif %}
+                </th>
+                <th width="500"></th>
             </tr></table>
         </div>
     </div>

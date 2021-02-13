@@ -2,27 +2,28 @@
 {% block content %}
     <table id="id_tabel">
         <thead class="header_style">
-<!--            <th>Index</th>-->
-            <th>Banner</th>
-            <th>Event Name</th>
-            <th>Data</th>
-            <th>Event Description</th>
-            <th>Event type</th>
-            <th>Actions</th>
+<!--&lt;!&ndash;            <th>Index</th>&ndash;&gt;-->
+<!--            <th>Banner</th>-->
+<!--&lt;!&ndash;            <th>Event Name</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th>Data</th>&ndash;&gt;-->
+<!--            <th>Event Description</th>-->
+<!--            <th>Event type</th>-->
+<!--            <th>Actions</th>-->
         </thead>
+        <br><br>
         <tbody>
         {% for item in all_events %}
             <tr>
-<!--                <td>{{ forloop.counter }}</td>-->
-                <td>
+                <td width="600"><center>
                     {% if item.banner %}
-                    <img src="/media/{{ item.banner }}" width="100"></td>
+                    <a href="{% url 'app1:preventia_sinuciderii' %}"><img src="/media/{{ item.banner }}" width="600"></a>
+                    <br><b><h5>{{ item.eventdate }} - {{ item.event_type }}</h5></b>
+                    <br>{{ item.eventdescription }}
+                    <br><a href="{% url 'app1:modificare' item.id %}" class="btn btn-high btn-warning"><b>Edit</b></a>
+                    <a href="{% url 'app1:stergere' item.id %}" class="btn btn-high btn-danger"><b>Delete</b></a>
+                    <br><br><br>
+                </center></td>
                     {% endif %}
-                <td>{{ item.eventname }}</td>
-                <td>{{ item.data }}</td>
-                <td>{{ item.eventdescription }}</td>
-                <td>{{ item.event_type }}</td>
-                <td><a href="{% url 'app1:stergere' item.id %}" class="btn btn-high btn-danger"><b>Delete</b></a></td>
             </tr>
         {% endfor %}
         </tbody>
