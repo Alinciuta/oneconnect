@@ -18,7 +18,7 @@ class Events(models.Model):
     event_type = models.CharField(max_length=50, choices=et_choices)
 
     def __str__(self):
-        return f"{self.banner} - {self.eventname} - {self.eventdate}"
+        return f"{self.eventname} - {self.eventdate}"
 
 
 class Question(models.Model):

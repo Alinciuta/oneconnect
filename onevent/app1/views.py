@@ -50,7 +50,8 @@ class EventsDeleteView(DeleteView):
 
 class UpdateEventsView(UpdateView):
     model = Events
-    fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type']
+    # fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type']
+    form_class = EventFormAdd
     template_name = 'app1/events_form.html'
 
     def get_form_kwargs(self):
@@ -83,7 +84,7 @@ class EventsDetailView(DetailView):
 class QuestionAdd(CreateView):
     model = Question
     fields = ['author', 'content']
-    template_name = 'app1/question_form.html'
+    template_name = 'app1/question_form'
 
     def get_success_url(self):
         return reverse('app1:events')
@@ -91,5 +92,5 @@ class QuestionAdd(CreateView):
 
 class QuestionIndex(ListView):
     model = Question
-    template_name = 'app1/events_details.html'
+    template_name = 'app1/event_questions.html'
     context_object_name = 'all_questions'

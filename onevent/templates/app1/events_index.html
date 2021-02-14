@@ -1,15 +1,15 @@
 {% extends 'menu.html' %}
 {% block content %}
-    <table id="id_tabel">
+    <center><table id="id_tabel">
         <thead class="header_style">
         </thead>
         <br><br>
         <tbody>
         {% for item in all_events %}
             <tr>
-                <td width="600"><center>
+                <td width="800"><center>
                     {% if item.banner %}
-                    <a href="{% url 'app1:preventia_sinuciderii' %}"><img src="/media/{{ item.banner }}" width="600"></a>
+                    <a href="{% url 'app1:preventia_sinuciderii' %}"><img src="/media/{{ item.banner }}" width="800"></a>
                     <br><b><h5>{{ item.eventdate }} - {{ item.event_type }}</h5></b>
                     <br>{{ item.eventdescription }}
                     <br><a href="{% url 'app1:modificare' item.id %}" class="btn btn-high btn-warning"><b>Edit</b></a>
@@ -21,4 +21,5 @@
         {% endfor %}
         </tbody>
     </table>
+    </center>
 {% endblock %}

@@ -18,13 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView
-
 from app1 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app1.urls')),
-    path('userprofile/', include('userprofile.urls')),
+    path('', include('userprofile.urls')),
     path('events/', include('django.contrib.auth.urls'), {'next_page': 'home/'}, name='login'),
     path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('accounts/profile/', views.HomeIndex.as_view(), name="events"),

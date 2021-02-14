@@ -28,9 +28,10 @@
   <form method="POST">
     {% csrf_token %}
     <div class="box">
+
       {{ question_form }}
 
-      <button class="btn btn-info" type="submit">Add question</button>
+        <button class="btn btn-info" type="submit">Add question</button>
     </div>
   </form>
   {% else %}
