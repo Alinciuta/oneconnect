@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_uuid_primary_key',
     'crispy_forms',
     'app1',
+    'app2',
     'userprofile',
 ]
 
@@ -132,7 +133,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 LOGIN_REDIRECT_URL = '/events/'
 LOGOUT_REDIRECT_URL = '/'

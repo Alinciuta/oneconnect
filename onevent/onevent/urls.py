@@ -23,9 +23,10 @@ from app1 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app1.urls')),
+    path('', include('app2.urls')),
     path('userprofile/', include('userprofile.urls')),
     path('', include('django.contrib.auth.urls'), {'next_page': '/'}, name='login'),
-    path('', LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('login', LoginView.as_view(template_name='registration/login.html'), name='login'),
     # path('accounts/profile/', views.HomeIndex.as_view(), name="events"),
-    path('events/logout/', views.acasa, name="home"),
+    path('events/logout/', views.HomeIndex.as_view(), name="home"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
