@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app1.urls')),
     path('', include('userprofile.urls')),
-    path('events/', include('django.contrib.auth.urls'), {'next_page': 'home/'}, name='login'),
+    path('home/', include('django.contrib.auth.urls'), {'next_page': 'home/'}, name='login'),
     path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('accounts/profile/', views.HomeIndex.as_view(), name="events"),
     path('events/logout/', views.acasa, name="home"),

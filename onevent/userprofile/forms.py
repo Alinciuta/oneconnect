@@ -1,13 +1,13 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import TextInput, Select
-from userprofile.models import UserExtendE
+from userprofile.models import UserExtend
 
 
 class NewAccountForm(forms.ModelForm):
 
     class Meta:
-        model = UserExtendE
+        model = UserExtend
         fields = ['first_name', 'last_name', 'email', 'username', 'for_event']
 
         widgets = {
@@ -15,9 +15,7 @@ class NewAccountForm(forms.ModelForm):
             'last_name': TextInput(attrs={'placeholder': 'Last name', 'class': 'form-control'}),
             'email': TextInput(attrs={'placeholder': 'Email address', 'class': 'form-control'}),
             'username': TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'}),
-            # 'company': TextInput(attrs={'placeholder': 'Company', 'class': 'form-control'}),
-            # 'job_title': TextInput(attrs={'placeholder': 'Job title', 'class': 'form-control'}),
-            'for_event': Select(attrs={'placeholder': 'Username of user', 'class': 'form-control'}),
+            'for_event': Select(attrs={'placeholder': 'Interested in', 'class': 'form-control'}),
         }
 
     def __init__(self, pk, state, *args, **kwargs):

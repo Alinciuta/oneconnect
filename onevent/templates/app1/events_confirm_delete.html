@@ -3,7 +3,11 @@
 
 <form method="post">{% csrf_token %}
 <br><br><center>
-    <h5>You are about to Delete this event. Are you sure?</h5>
+    <h5>You are about to Delete this event:<br>
+        <br>
+        <i><p style="color:#2d78b3">{{ object.eventname }}</p></i>
+        <br><br>
+        Are you sure you want to permanently delete?</h5>
 <br>
         <input class="btn btn-high btn-danger btn-lg" type="submit" value="Confirm">
     </center>

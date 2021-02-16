@@ -1,8 +1,5 @@
 from django.db import models
-
-# Create your models here.
-from django.db.models import options
-from django.forms import forms, ModelForm, Textarea
+from django.urls import reverse
 
 et_choices = (('Virtual', 'Virtual'),
                ('Live', 'Live'),
@@ -16,9 +13,14 @@ class Events(models.Model):
     eventdescription = models.TextField(default='')
     eventagenda = models.TextField(default='')
     event_type = models.CharField(max_length=50, choices=et_choices)
+    short = models.CharField(max_length=30, blank=False, unique=True, null=True)
+    video_url = models.CharField(max_length=1000, blank=False, unique=True, null=True)
 
     def __str__(self):
         return f"{self.eventname} - {self.eventdate}"
+
+    def get_absolute_url(self):
+        return reverse('event_detail', args=[str(self.id)])
 
 
 class Question(models.Model):
@@ -26,4 +28,7 @@ class Question(models.Model):
     content = models.TextField(max_length=300)
 
     def __str__(self):
-        return str(self.author)
+        return f"{self.author}: {self.content}"
+
+    def get_absolute_url(self):
+        return reverse('event_detail', args=[str(self.id)])

@@ -11,12 +11,12 @@ from django.urls import reverse
 from django.views.generic import UpdateView, CreateView
 
 from userprofile.forms import NewAccountForm
-from userprofile.models import UserExtendE
+from userprofile.models import UserExtend
 
 
 class CreateUser(CreateView):
     form_class = NewAccountForm
-    model = UserExtendE
+    model = UserExtend
     template_name = 'app1/events_form.html'
 
     def get_form_kwargs(self):
@@ -35,14 +35,14 @@ class CreateUser(CreateView):
         return super(CreateUser, self).form_invalid(form)
 
     def get_success_url(self):
-        psw = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.ascii_lowercase + string.digits + punctuation) for _ in range(8))
+        psw = 'AwSeDrFcVgTyHnJiU76@Po0(*q@'
         try:
             user_instance = User.objects.get(id=self.object.id)
             user_instance.set_password(psw)
             user_instance.save()
-            content_email = f'Your username and password: {user_instance.username} {psw}'
+            content_email = f'Your account is set. Your username and password are: {user_instance.username} {psw}'
             msg_html = render_to_string('emails/invite_user.html', {'content_email': str(content_email)})
-            msg = EmailMultiAlternatives(subject='Invite', body=content_email, from_email='contact@test.ro', to=[user_instance.email])
+            msg = EmailMultiAlternatives(subject='Registration successful', body=content_email, from_email='no-reply@events.ro', to=[user_instance.email])
             msg.attach_alternative(msg_html, 'text/html')
             msg.send()
         except Exception:
