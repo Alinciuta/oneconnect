@@ -1,6 +1,5 @@
 import string
 from random import random
-from string import punctuation
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -9,9 +8,10 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.generic import UpdateView, CreateView
-
 from userprofile.forms import NewAccountForm
 from userprofile.models import UserExtend
+
+punctuation = '!$%?#@'
 
 
 class CreateUser(CreateView):
@@ -35,7 +35,7 @@ class CreateUser(CreateView):
         return super(CreateUser, self).form_invalid(form)
 
     def get_success_url(self):
-        psw = 'password'
+        psw = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.ascii_lowercase + string.digits + punctuation) for _ in range(8))
         try:
             user_instance = User.objects.get(id=self.object.id)
             user_instance.set_password(psw)
@@ -51,9 +51,17 @@ class CreateUser(CreateView):
 
 
 class UpdateProfile(LoginRequiredMixin, UpdateView):
-    fields = '__all__'
-    model = User
+    form_class = NewAccountForm
+    model = UserExtend
     template_name = 'app1/events_form.html'
 
+    def get_queryset(self):
+        return User.objects.filter(id=self.request.user.id)
+
+    def get_form_kwargs(self):
+        kwargs = super(UpdateProfile, self).get_form_kwargs()
+        kwargs.update({'pk': self.kwargs['pk'], 'state': 'update'})
+        return kwargs
+
     def get_success_url(self):
-        return reversed()
+        return reversed('app1:home')

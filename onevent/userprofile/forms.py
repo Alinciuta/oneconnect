@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
-from django.forms import TextInput, Select
+from django.forms import TextInput, Select, ModelChoiceField
+from app1.models import Events
 from userprofile.models import UserExtend
 
 
@@ -22,6 +23,12 @@ class NewAccountForm(forms.ModelForm):
         super(NewAccountForm, self).__init__(*args, **kwargs)
         self.pk = pk
         self.state = state
+        if self.state != 'create':
+            print(UserExtend.objects.get(id=self.pk).for_event.id)
+            self.fields['for_event'] = ModelChoiceField(queryset=Events.objects.filter(id=UserExtend.objects.get(id=self.pk).for_event.id))
+            self.initial['for_event'] = Events.objects.get(id=UserExtend.objects.get(id=self.pk).for_event.id)
+            self.fields['for_event'].widget.attrs['class'] = 'form-control'
+
 
     def clean(self):
         cleaned_data = self.cleaned_data

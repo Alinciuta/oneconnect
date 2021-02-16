@@ -4,5 +4,6 @@ from userprofile import views
 app_name = 'userprofile'
 
 urlpatterns = [
-    path('new_account/', views.CreateUser.as_view(), name="new_account"),
+    path('updateprofile/<int:pk>/', views.UpdateProfile.as_view(), name='update_profile'),
+    path('new_account/', views.CreateUser.as_view(), name='new_account'),
 ]
