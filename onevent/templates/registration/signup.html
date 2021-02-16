@@ -4,10 +4,3 @@ from django.shortcuts import render
 from django.views.generic import UpdateView
 
 
-class UpdateProfile(LoginRequiredMixin, UpdateView):
-    fields = '__all__'
-    model = User
-    template_name = 'app1/events_form.html'
-
-    def get_success_url(self):
-        return reversed()

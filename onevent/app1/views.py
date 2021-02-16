@@ -18,7 +18,7 @@ class HomeIndex(ListView):
 
 class EventFormAdd(CreateView):
     model = Events
-    fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type', 'short', 'video_url']
+    fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type', 'video_url']
     template_name = 'app1/events_form.html'
 
     def get_success_url(self):

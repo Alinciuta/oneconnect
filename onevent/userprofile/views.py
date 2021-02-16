@@ -35,7 +35,7 @@ class CreateUser(CreateView):
         return super(CreateUser, self).form_invalid(form)
 
     def get_success_url(self):
-        psw = 'AwSeDrFcVgTyHnJiU76@Po0(*q@'
+        psw = 'password'
         try:
             user_instance = User.objects.get(id=self.object.id)
             user_instance.set_password(psw)
@@ -53,7 +53,7 @@ class CreateUser(CreateView):
 class UpdateProfile(LoginRequiredMixin, UpdateView):
     fields = '__all__'
     model = User
-    template_name = 'registration/signup.html'
+    template_name = 'app1/events_form.html'
 
     def get_success_url(self):
         return reversed()

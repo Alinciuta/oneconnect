@@ -13,7 +13,6 @@ class Events(models.Model):
     eventdescription = models.TextField(default='')
     eventagenda = models.TextField(default='')
     event_type = models.CharField(max_length=50, choices=et_choices)
-    short = models.CharField(max_length=30, blank=False, unique=True, null=True)
     video_url = models.CharField(max_length=1000, blank=False, unique=True, null=True)
 
     def __str__(self):
