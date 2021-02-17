@@ -7,9 +7,11 @@
             <tr>
                 <td width="full"><center>
                     <img src="media/{{ object.banner }}" width="1000"></a>
-                    <br>
                     <br><h3>{{ object.eventname }}</h3>
                     <br><h4>{{ object.eventdate }} - {{ object.event_type }}</h4><br>
+                    <br>
+                    {{ object.eventdescription }}
+                    <br><br>
                 </center></td></tr>
         </tbody>
 </table>
@@ -54,15 +56,15 @@
 
 
   <ul>
-
+{{ object.name }} <br> {{ intrebare.body }}<br><br>
     {% for question in all_questions %}
     <li>
      <div>
         <span>
-          <strong class="text-info">{{ request.question.author }} </strong>
+          <strong class="text-info">{{ question.name }} </strong>
         </span>
         <p>
-          {{ request.question.content }}
+          {{ question.body }}
         </p>
       </div>
     </li>
@@ -76,25 +78,14 @@
                 </tr>
             </tbody></table>
 
-<br><br><center><h4>Agenda</h4>
+<br><br><center>
+    <h4>Agenda</h4>
 <br><br>
 {{ object.eventagenda }}
-<br><br></center>
 
-<div class="card-body">
-        {% if new_question %}
-        <div class="alert alert-success" role="alert">
-          Your question is awaiting moderation
-        </div>
-        {% else %}
-        <h3>Ask a question</h3>
-        <form method="POST" style="margin-top: 1.3em;">
-          {{ ask_form }}
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-        </form>
-        {% endif %}
-      </div>
+<br><br>
 
+
+    <br><br></center>
 
 {% endblock %}

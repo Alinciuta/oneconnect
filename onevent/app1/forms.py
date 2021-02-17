@@ -6,7 +6,7 @@ from app1.models import Events
 class EventForm(forms.ModelForm):
     class Meta:
         model = Events
-        fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type', 'video_url', 'slug']
+        fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type', 'video_url']
 
         widgets = {
             'eventname': TextInput(attrs={'placeholder': 'Event Name', 'class': 'form-control'}),
@@ -16,7 +16,7 @@ class EventForm(forms.ModelForm):
             'eventdescription': Textarea(attrs={'placeholder': 'Description', 'class': 'form-control'}),
             'event_type': Select(attrs={'placeholder': 'Event type', 'class': 'form-control'}),
             'video_url': TextInput(attrs={'placeholder': 'Event video', 'class': 'form-control'}),
-            'slug': TextInput(attrs={'placeholder': 'Slug', 'class': 'form-control'}),
+            # 'slug': TextInput(attrs={'placeholder': 'Slug', 'class': 'form-control'}),
         }
 
     def __init__(self, pk, *args, **kwargs):

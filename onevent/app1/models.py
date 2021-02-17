@@ -15,10 +15,10 @@ class Events(models.Model):
     eventagenda = models.TextField(default='')
     event_type = models.CharField(max_length=50, choices=et_choices)
     video_url = models.CharField(max_length=1000, blank=False, unique=True, null=True)
-    slug = models.SlugField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100)
 
     def __str__(self):
         return f"{self.eventname} - {self.eventdate}"
 
     def get_absolute_url(self):
-        return reverse('event_detail', args=[str(self.id)])
+        return reverse('event_detail')

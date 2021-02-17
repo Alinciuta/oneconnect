@@ -26,7 +26,11 @@
                 <th><a href="{% url 'app1:home' %}"><img src="/media/logo.png" height="70"></a></th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:home' %}">Home</a></th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:events' %}">All events</a></th>
-                <th><a style="color:#f23a40;" href="{% url 'app1:adaugare' %}">Add event</a></th>
+                <th>
+                        {% if request.user.is_authenticated == True %}
+                    <a style="color:#f23a40;" href="{% url 'app1:adaugare' %}">Add event</a>
+                        {% endif %}
+                </th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:contact' %}">Contact</a></div></th>
                 <th>
                     {% if request.user.is_authenticated %}
@@ -49,8 +53,8 @@
                     <a style="color:#f23a40;" href="{% url 'logout' %}">Logout</a></div>
                     {% endif %}
                 </th>
-                <th width="500"></th>
-            </tr></table>
+                <th width="450"></th>
+    </tr></div></table>
         </div>
     </div>
 </nav>
@@ -59,11 +63,12 @@
     <div class="filter filter-danger"></div>
     <div class="content-center">
         <div class="container">
-            <br><br>
+<br><BR><br><br>
             {% block content %}
             {% endblock %}
         </div>
     </div>
     </div>
+
 </body>
 </html>
