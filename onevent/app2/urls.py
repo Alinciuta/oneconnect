@@ -5,5 +5,5 @@ from app2 import views
 app_name = 'app2'
 
 urlpatterns = [
-    path('<slug:slug>/', views.post_detail, name='post_detail')
+    # path('<slug:slug>/', views.eveniment_detail, name='eveniment_detail')
 ]

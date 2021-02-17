@@ -29,6 +29,12 @@
                 <th><a style="color:#f23a40;" href="{% url 'app1:adaugare' %}">Add event</a></th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:contact' %}">Contact</a></div></th>
                 <th>
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'userprofile:update_profile' request.user.id %}" class="nav-link"
+                           style="color: brown">{{ request.user.first_name }}</a>
+                {% endif %}
+                </th>
+                <th>
                     {% if request.user.is_authenticated == False %}
                     <a style="color:#f23a40;" href="{% url 'login' %}">Login</a></div>
                     {% endif %}

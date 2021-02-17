@@ -4,8 +4,8 @@ from django.db import models
 from app1.models import Events
 
 
-class Comment(models.Model):
-    post = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='comments')
+class Question(models.Model):
+    eveniment = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='questions')
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -16,4 +16,4 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return 'Comment {} by {}'.format(self.body, self.name)
+        return 'Question {} by {}'.format(self.body, self.name)

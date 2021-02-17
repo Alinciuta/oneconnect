@@ -1,12 +1,12 @@
 from django import forms
 from django.forms import TextInput, Textarea, Select, ImageField, ClearableFileInput
-from app1.models import Events, Question
+from app1.models import Events
 
 
 class EventForm(forms.ModelForm):
     class Meta:
         model = Events
-        fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type', 'video_url']
+        fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type', 'video_url', 'slug']
 
         widgets = {
             'eventname': TextInput(attrs={'placeholder': 'Event Name', 'class': 'form-control'}),
@@ -16,6 +16,7 @@ class EventForm(forms.ModelForm):
             'eventdescription': Textarea(attrs={'placeholder': 'Description', 'class': 'form-control'}),
             'event_type': Select(attrs={'placeholder': 'Event type', 'class': 'form-control'}),
             'video_url': TextInput(attrs={'placeholder': 'Event video', 'class': 'form-control'}),
+            'slug': TextInput(attrs={'placeholder': 'Slug', 'class': 'form-control'}),
         }
 
     def __init__(self, pk, *args, **kwargs):
@@ -35,17 +36,3 @@ class EventForm(forms.ModelForm):
                 msg = 'Event already added'
                 self._errors['eventname'] = self.error_class([msg])
         return cleaned_data
-
-
-class NewQuestionForm(forms.ModelForm):
-    class Meta:
-        model = Question
-        fields = ['author', 'content']
-        widgets = {
-            'author': TextInput(attrs={'placeholder': 'author', 'class': 'form-control'}),
-            'content': TextInput(attrs={'placeholder': 'content', 'class': 'form-control'}),
-        }
-
-    def __init__(self, pk, *args, **kwargs):
-        super(NewQuestionForm, self).__init__(*args, **kwargs)
-        self.pk = pk

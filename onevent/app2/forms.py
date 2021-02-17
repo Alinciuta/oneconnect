@@ -1,8 +1,8 @@
 from django import forms
-from app2.models import Comment
+from app2.models import Question
 
 
-class CommentForm(forms.ModelForm):
+class QuestionForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = Question
         fields = ('name', 'email', 'body')
