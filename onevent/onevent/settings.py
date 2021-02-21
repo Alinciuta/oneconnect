@@ -136,6 +136,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
 LOGIN_REDIRECT_URL = '/events/'
-LOGOUT_REDIRECT_URL = '/'
-
+LOGOUT_REDIRECT_URL = '/acasa/'
+SECURE_REDIRECT_EXEMPT = ['home/']
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

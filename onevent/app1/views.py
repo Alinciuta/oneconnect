@@ -1,11 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from app1.models import Events
 from app1.forms import EventForm
 from app2.forms import QuestionForm
 from app2.models import Question
+from app2.views import Questions
 
 
 class HomeIndex(ListView):
@@ -75,3 +77,8 @@ class EventzDetailView(CreateView):
 
     def get_success_url(self):
         return reverse('app1:event_detail')
+
+
+def redirect_view(request):
+    response = redirect('/acasa/')
+    return response

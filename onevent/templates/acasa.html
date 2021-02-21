@@ -1,7 +1,9 @@
 {% extends 'menu.html' %}
+{% load static %}
 {% block content %}
     <br>
     <br>
+
 
 <div>
 <table width="1200px">
@@ -11,7 +13,7 @@
       We are the Romanian leading company in organization and management of congresses, conferences and webinars<br><br><br>
       <b><h1>ONLINE SOLUTION<br>FOR YOUR EVENT</h1></b>
       <br><br><br>
-      <a href="{% url 'app1:contact' %}" class="btn btn-high btn-info btn-lg"><b>Contact us!</b></button>
+      <a href="{% url 'app1:contact' %}" class="btn btn-high btn-info btn-lg"><b>Contact us!</b></a>
       <br>
   </td>
   <td width="500px">
@@ -19,5 +21,5 @@
   </td>
   </tr>
 </table>
-
+</div>
 {% endblock %}

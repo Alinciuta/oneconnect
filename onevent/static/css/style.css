@@ -10,3 +10,7 @@
     /*padding-top: 1px;*/
     /*padding-bottom: 10px;*/
 }
+
+body {
+    background: white url("/media/wpp.jpg") no-repeat;
+}

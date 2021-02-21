@@ -8,7 +8,8 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
-<body class="about-us" style="background-color:white;">
+<body class="about-us" style="background-image: url('/media/bg2.jpg'); background-attachment: fixed;
+  background-size: cover;">
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent nav-down" color-on-scroll="blue">
     <div class="container">
         <div class="navbar-translate">
@@ -21,9 +22,9 @@
                   padding: 10px;
                 }
                 </style>
-            <table style="background-color:white;><tr>
+            <table><tr>
             <div class="collapse navbar-collapse">
-                <th><a href="{% url 'app1:home' %}"><img src="/media/logo.png" height="70"></a></th>
+                <th><a href="{% url 'app1:home' %}"><img src="/media/logow.png" height="70"></a></th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:home' %}">Home</a></th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:events' %}">All events</a></th>
                 <th>
@@ -50,11 +51,11 @@
                 </th>
                 <th>
                     {% if request.user.is_authenticated == True %}
-                    <a style="color:#f23a40;" href="{% url 'logout' %}">Logout</a></div>
+                    <a style="color:#f23a40;" href="{% url 'logout' %}?next=/acasa">Logout</a></div>
                     {% endif %}
                 </th>
                 <th width="450"></th>
-    </tr></div></table>
+    </div></tr></table>
         </div>
     </div>
 </nav>
