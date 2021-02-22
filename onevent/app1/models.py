@@ -16,6 +16,7 @@ class Events(models.Model):
     event_type = models.CharField(max_length=50, choices=et_choices)
     video_url = models.CharField(max_length=1000, blank=False, unique=True, null=True)
     slug = models.SlugField(max_length=100)
+    moderator = models.CharField(max_length=200, default='')
 
     def __str__(self):
         return f"{self.eventname} - {self.eventdate}"

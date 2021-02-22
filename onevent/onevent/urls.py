@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app1.urls')),
     path('', include('app2.urls')),
+    path('', include('app3.urls')),
     path('userprofile/', include('userprofile.urls')),
     path('', include('django.contrib.auth.urls'), {'next_page': '/'}, name='login'),
     path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
-    # path('events/logout', views.HomeIndex.as_view(), name="events"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

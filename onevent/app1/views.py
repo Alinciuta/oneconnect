@@ -1,13 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from app1.models import Events
 from app1.forms import EventForm
 from app2.forms import QuestionForm
 from app2.models import Question
-from app2.views import Questions
 
 
 class HomeIndex(ListView):
@@ -22,7 +20,7 @@ class HomeIndex(ListView):
 
 class EventFormAdd(CreateView):
     model = Events
-    fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type', 'video_url']
+    fields = ['eventname', 'banner', 'eventdate', 'eventagenda', 'eventdescription', 'event_type', 'video_url', 'moderator']
     template_name = 'app1/events_form.html'
 
     def get_success_url(self):
@@ -79,6 +77,11 @@ class EventzDetailView(CreateView):
         return reverse('app1:event_detail')
 
 
-def redirect_view(request):
-    response = redirect('/acasa/')
-    return response
+class EvList(ListView):
+    model = Events
+    template_name = 'app1/events/evlist.html'
+    context_object_name = 'all_events_search'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super(EvList, self).get_context_data()
+        return data

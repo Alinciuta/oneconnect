@@ -1,12 +1,8 @@
 import string
-
 import random
-from random import SystemRandom
-from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.core.mail import EmailMultiAlternatives
-from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.generic import UpdateView, CreateView
@@ -62,9 +58,14 @@ class CreateNewUser(CreateView):
             user_instance.save()
             content_email = f'Your Login details are: {user_instance.username} - {psw}'
             msg_html = render_to_string('user_activation.html', {'content_email': str(content_email)})
-            msg = EmailMultiAlternatives(subject='Account_actiated', body=content_email, from_email='noreply@onevent.ro', to=[user_instance.email])
+            msg = EmailMultiAlternatives(subject='Account_activated', body=content_email, from_email='noreply@onevent.ro', to=[user_instance.email])
             msg.attach_alternative(msg_html, 'text/html')
             msg.send()
         except Exception:
             pass
         return reverse('login')
+
+    # def permis(self, username):
+    #     permission = Permission.objects.get(customer='customer')
+    #     u = get_user_model().get(username=username)
+    #     u.user_permissions.add(permission)

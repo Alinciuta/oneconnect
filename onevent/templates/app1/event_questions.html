@@ -1,19 +1,28 @@
 {% extends 'menu.html' %}
 {% block content %}
-    <table id="id_tabel">
+
+<h4 class="text-primary"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asked questions</b></h4>
+<table id="id_tabel">
         <thead class="header_style">
         </thead>
         <br><br>
         <tbody>
-        {% for item in all_questions %}
-            <tr>
-                <td>
-                    {{ item.name }} asked:
-                    {{ item.body }}
-<br>
-                </td>
-            </tr>
-        {% endfor %}
+        <ul>
+    {% for question in all_questions %}
+    <li>
+     <div>
+        <span>
+          <strong class="text-info">{{ question.name }} </strong> ({{ question.email }}) asked on {{ question.created_on }} about the event {{ object.eventname }} with ID #{{ question.eveniment_id }}:
+        </span>
+        <p>
+          {{ question.body }}
+        </p>
+         <br>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
         </tbody>
     </table>
 {% endblock %}

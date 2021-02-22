@@ -1,6 +1,13 @@
 {% extends 'menu.html' %}
 {% block content %}
-    <center><table id="id_tabel">
+<nav class="navbar fixed-bottom navbar-transparent nav-down">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary">Complete view</button>
+                        <a href="{% url 'app1:events_list' %}"><button type="button" class="btn btn-secondary">Basic view</button></a>
+                    </div>
+
+</nav>
+<center><table id="id_tabel">
         <thead class="header_style">
         </thead>
         <br><br>
@@ -31,7 +38,8 @@
         {% endfor %}
         </tbody>
     </table>
-
-
     </center>
+<!--<script type="text/javascript">-->
+<!--    document.getElementById("id_q").value = "{{ query }}"-->
+<!--</script>-->
 {% endblock %}

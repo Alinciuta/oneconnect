@@ -10,7 +10,7 @@
                     <br><h3>{{ object.eventname }}</h3>
                     <br><h4>{{ object.eventdate }} - {{ object.event_type }}</h4><br>
                     <br>
-                    {{ object.eventdescription }}
+                    {{ object.eventdescription|linebreaks }}
                     <br><br>
                 </center></td></tr>
         </tbody>
@@ -71,25 +71,27 @@
     {% endfor %}
   </ul>
 
-    <strong class="text-secondary"><br>No more questions yet..</strong>
-
+    <center><strong class="text-secondary"><br>Due to the pandemic situation all questions will receive the answer on email. Make sure your email is valid.</strong>
+        <br><a href="{% url 'app2:intrebarile' %}"><b>You may check your email/question here.</b></a></center>
 </div>
                     </td>
                 </tr>
-            </tbody></table>
 
+<tr><td width="661px">
 <br><br><center>
     <h4>Agenda</h4>
 <br><br>
-{{ object.eventagenda }}
-{{ intrebare.name }}
-
-<br><br>
-    {% for intrebare in all_questions %}
-{{ intrebare.name }}
-{{ intrebare.body }}
-    {% endfor %}
-
-    <br><br></center>
+    <b>{{ object.eventagenda|linebreaks }}</b></center>
+</td>
+    <td style="vertical-align:top"><center>
+        <br><br>
+        <h5><b>Event Moderator:</b></h5><br>
+        <img src="/media/moderator.jpg" width="130"><br>
+        <h5><b>{{ object.moderator }}</b></h5>
+    </center></td></tr>
+            </tbody></table>
+<br><br><br>
+    <center><a href="{% url 'app3:questionaire' %}" class="btn btn-high btn-danger btn-lg"><b>Mark event as finished!<br>Get your Certificate of Attendance!</b></a>
+    </center><br><br><br>
 
 {% endblock %}

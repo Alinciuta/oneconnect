@@ -1,0 +1,28 @@
+{% extends 'menu.html' %}
+{% block content %}
+<div style="color: brown">
+<center>
+    <h5>
+        <b>Thank you for participating to our event. <br>Please fill in the feedback form below in order to receive your certificate.</b>
+    </h5>
+</center>
+<br>
+<form method="POST">
+        {% csrf_token %}
+          <div class="box">
+            <div class="field">
+                {% for field in form %}
+                    <div>
+                        <label class="col-md-50  text-left" style="padding-top: 15px;"><b>{{ field.label }}</b></label>
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                {{ field }}
+                                {{ field.errors }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        <br><button class="btn btn-danger btn-round"><b>Submit answers</b></button><br><br><br><br>
+          </div></form></div>
+{% endblock %}

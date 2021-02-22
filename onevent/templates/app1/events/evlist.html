@@ -1,0 +1,24 @@
+{% extends 'menu.html' %}
+{% block content %}
+<nav class="navbar fixed-bottom navbar-transparent nav-down">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="{% url 'app1:events' %}"><button type="button" class="btn btn-secondary">Complete view</button></a>
+                        <button type="button" class="btn btn-secondary">Basic view</button>
+                    </div>
+
+</nav>
+
+{% for item in all_events_search %}
+
+<ul id="myUL">
+  <li><b><a style="color:grey" href="{% url 'app1:event_detail' %}?e={{ item.id }}">{{ item.eventname }} - {{ item.eventdate }}</a></b></li>
+</ul>
+{% endfor %}
+    </center>
+
+
+<script type="text/javascript">
+    document.getElementById("id_q").value = "{{ query }}"
+</script>
+
+{% endblock %}
