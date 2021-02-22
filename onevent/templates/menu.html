@@ -28,9 +28,9 @@
                 <th><a style="color:#f23a40;" href="{% url 'app1:home' %}">Home</a></th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:events' %}">All events</a></th>
                 <th>
-                        {% if request.user.is_authenticated == True %}
+                        {% if request.user.is_authenticated == True %}{% if user.is_superuser %}
                     <a style="color:#f23a40;" href="{% url 'app1:adaugare' %}">Add event</a>
-                        {% endif %}
+                        {% endif %}{% endif %}
                 </th>
                 <th><a style="color:#f23a40;" href="{% url 'app1:contact' %}">Contact</a></div></th>
                 <th>

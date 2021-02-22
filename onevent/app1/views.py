@@ -13,10 +13,6 @@ class HomeIndex(ListView):
     template_name = 'app1/events_index.html'
     context_object_name = 'all_events'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        data = super(HomeIndex, self).get_context_data()
-        return data
-
 
 class EventFormAdd(CreateView):
     model = Events
@@ -35,13 +31,6 @@ def acasa(request):
     return render(request, 'acasa.html')
 
 
-class EventsDeleteView(DeleteView):
-    model = Events
-
-    def get_success_url(self):
-        return reverse('app1:events')
-
-
 class UpdateEventsView(LoginRequiredMixin, UpdateView):
     model = Events
     form_class = EventForm
@@ -56,6 +45,13 @@ class UpdateEventsView(LoginRequiredMixin, UpdateView):
         return reverse('app1:events')
 
 
+class EventsDeleteView(DeleteView):
+    model = Events
+
+    def get_success_url(self):
+        return reverse('app1:events')
+
+
 class EventzDetailView(CreateView):
     model = Question
     template_name = 'app1/events/event_live.html'
@@ -64,6 +60,7 @@ class EventzDetailView(CreateView):
     def get_context_data(self, **kwargs):
         data = super(EventzDetailView, self).get_context_data(**kwargs)
         data['object'] = Events.objects.get(id=self.request.GET.get('e'))
+        data['all_questions'] = Question.objects.filter(eveniment_id=self.request.GET.get('e'))
         return data
 
     def form_valid(self, form):

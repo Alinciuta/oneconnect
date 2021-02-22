@@ -25,8 +25,8 @@
                     {% if request.user.is_authenticated == True %}
                     <br>
                     <a href="{% url 'app1:event_detail' %}?e={{ item.id }}" class="btn btn-high btn-success"><b>Attend event</b></a>
-                    <a href="{% url 'app1:modificare' item.id %}" class="btn btn-high btn-warning"><b>Edit</b></a>
-                    <a href="{% url 'app1:stergere' item.id %}" class="btn btn-high btn-danger"><b>Delete</b></a>
+                    {% if user.is_superuser %}<a href="{% url 'app1:modificare' item.id %}" class="btn btn-high btn-warning"><b>Edit</b></a>
+                    <a href="{% url 'app1:stergere' item.id %}" class="btn btn-high btn-danger"><b>Delete</b></a>{% endif %}
                     {% endif%}
                     {% if request.user.is_authenticated == False %}
                     <br><a href="{% url 'login' %}">Want to <b>attend </b> or <b>modify</b> event? Login now!</a>

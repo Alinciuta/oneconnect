@@ -20,18 +20,21 @@
             <thead class="header_style"></thead>
             <tbody>
                 <tr>
-                    <td>
+                    <td width="650">
                         <iframe src="{{ object.video_url }}" width="621" height="355" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                    </td>
-                     <td>
 
+                        <br><br><center>
+    <h4>Agenda</h4>
+<br><br>
+    <b>{{ object.eventagenda|linebreaks }}</b></center>
+</td>
+                    <td valign="top">
 <h3>Ask a question!</h3>
 <div id="questions_section">
     {% if request.user.is_authenticated == True %}
   <form method="POST">
     {% csrf_token %}
     <div class="box">
-
             <div class="field">
                 {% for field in form %}
                     <div class="row">
@@ -45,7 +48,6 @@
                     </div>
                 {% endfor %}
             </div>
-
         <button class="btn btn-info" type="submit">Add question</button>
     </div>
   </form>
@@ -53,12 +55,11 @@
    {% if request.user.is_authenticated == False %}
   <a class="btn btn-outline-info" href="{% url 'login' %}">Log in to ask a question!</a><br>
    {% endif %}
-
-
+<br><br>
+    <strong class="text-info"><h5>Asked questions:</h5></strong>
   <ul>
-
+<br>
     {% for question in all_questions %}
-    <li>
      <div>
         <span>
           <strong class="text-info">{{ question.name }} </strong>
@@ -67,29 +68,16 @@
           {{ question.body }}
         </p>
       </div>
-    </li>
     {% endfor %}
   </ul>
+<strong class="text-secondary"><br>No more questions yet.</strong>
 
-    <center><strong class="text-secondary"><br>Due to the pandemic situation all questions will receive the answer on email. Make sure your email is valid.</strong>
-        <br><a href="{% url 'app2:intrebarile' %}"><b>You may check your email/question here.</b></a></center>
-</div>
-                    </td>
-                </tr>
-
-<tr><td width="661px">
-<br><br><center>
-    <h4>Agenda</h4>
-<br><br>
-    <b>{{ object.eventagenda|linebreaks }}</b></center>
-</td>
-    <td style="vertical-align:top"><center>
-        <br><br>
-        <h5><b>Event Moderator:</b></h5><br>
+    <br><br><br>
+        <center><h5><b>Event Moderator:</b></h5><br>
         <img src="/media/moderator.jpg" width="130"><br>
-        <h5><b>{{ object.moderator }}</b></h5>
-    </center></td></tr>
-            </tbody></table>
+            <h5><b>{{ object.moderator }}</b></h5></center>
+
+</div></td></tr></tbody></table>
 <br><br><br>
     <center><a href="{% url 'app3:questionaire' %}" class="btn btn-high btn-danger btn-lg"><b>Mark event as finished!<br>Get your Certificate of Attendance!</b></a>
     </center><br><br><br>
